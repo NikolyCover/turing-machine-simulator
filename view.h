@@ -1,0 +1,8 @@
+//
+// Created by nikoly on 10/04/24.
+//
+
+#ifndef TURING_MACHINE_SIMULATOR_VIEW_H
+#define TURING_MACHINE_SIMULATOR_VIEW_H
+
+#endif //TURING_MACHINE_SIMULATOR_VIEW_H

@@ -1,0 +1,10 @@
+# ninja log v5
+25	48	1712711721116443649	turing_machine_simulator	dab3c2af5d9624ac
+0	25	1712711721092441255	CMakeFiles/turing_machine_simulator.dir/main.c.o	56a23560f1c2a94e
+0	24	1712798045633186633	CMakeFiles/turing_machine_simulator.dir/view.c.o	85019559873ff1e0
+0	24	1712798045633186633	CMakeFiles/turing_machine_simulator.dir/service.c.o	878f956cec77f2db
+0	35	1712798045645186655	CMakeFiles/turing_machine_simulator.dir/main.c.o	56a23560f1c2a94e
+0	37	1712798045645186655	CMakeFiles/turing_machine_simulator.dir/controller.c.o	da9bb5cb8dc63229
+1	23	1712798064129225364	CMakeFiles/turing_machine_simulator.dir/controller.c.o	da9bb5cb8dc63229
+0	21	1712798087173286436	CMakeFiles/turing_machine_simulator.dir/controller.c.o	da9bb5cb8dc63229
+21	39	1712798087193286495	turing_machine_simulator	1d0ed31d1c5cc892
