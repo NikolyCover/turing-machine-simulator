@@ -17,28 +17,28 @@
 void start();
 
 // Inicia simulador
-// Pré-condição: afd preenchido
+// Pré-condição: maquina de turing preenchida
 // Pós-condição: aplicação finalizada
-void run_simulator(Machine afd);
+void run_simulator(Machine machine);
 
-// Valida uma palavra com um Machine
-// Pré-condição: palavra e afd
+// Valida uma palavra com uma maquina de turing
+// Pré-condição: palavra e maquina
 // Pós-condição: palavra validada
-int validate_word(char * word, Machine afd);
+int validate_word(char * word, Machine machine);
 
-// Libera espaçp alocado em um Machine
-// Pré-condição: afd
+// Libera espaçp alocado em um maquina
+// Pré-condição: maquina
 // Pós-condição: espaço liberado
-void free_afd(Machine afd);
+void free_machine(Machine machine);
 
 // Diz se um estado é final
-// Pré-condição: estado e afd
+// Pré-condição: estado e maquina de turing
 // Pós-condição: diz se é estado final
-int is_final_state(char * state, Machine afd);
+int is_final_state(char * state, Machine machine);
 
-// Inicia Machine
-// Pré-condição: afd alocado
-// Pós-condição: afd preenchido
-void init_afd(Machine * afd);
+// Inicia maquina
+// Pré-condição: maquina alocada
+// Pós-condição: maquina preenchida
+void init_machine(Machine * machine);
 
 #endif //AFD_SIMULATOR_CONTROLLER_H

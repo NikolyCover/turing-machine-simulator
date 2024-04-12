@@ -10,25 +10,20 @@
 
 typedef struct {
     char * current_state;
-    char symbol;
+    char read_symbol;
     char * next_state;
     char write_symbol;
     char direction;
 } Transition;
 
-typedef struct {
-    Transition transitions[MAX];
-} State;
-
 typedef  struct  {
-    State **states;
-    int states_size;
-    char **final_states;
+    int states_size; //Q
+    char **final_states; //F
     int final_states_size;
-    char tape[MAX_TAPE_SIZE];
-    int tapeHead;
     char **alphabet;
     int alphabet_size;
+    Transition * transitions;
+    int transitions_size;
 } Machine;
 
 #endif //TURING_MACHINE_SIMULATOR_MODEL_H

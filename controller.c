@@ -4,10 +4,10 @@
 #include "controller.h"
 
 /*
-// Inicia Machine
-// Pré-condição: afd alocado
-// Pós-condição: afd preenchido
-void init_afd(Machine * afd) {
+// Inicia maquina
+// Pré-condição: maquina alocada
+// Pós-condição: maquina preenchida
+void init_machine(Machine * afd) {
     afd->alphabet_size = 0;
     afd->states_size = 0;
     afd->final_states_size = 0;
@@ -19,7 +19,7 @@ void init_afd(Machine * afd) {
 }
 
 // Diz se um estado é final
-// Pré-condição: estado e afd
+// Pré-condição: estado e maquina de turing
 // Pós-condição: diz se é estado final
 int is_final_state(char * state, Machine afd) {
     for (int i = 0; i < afd.final_states_size; ++i) {
@@ -30,10 +30,10 @@ int is_final_state(char * state, Machine afd) {
     return 0;
 }
 
-// Libera espaçp alocado em um Machine
-// Pré-condição: afd
+// Libera espaçp alocado em um maquina
+// Pré-condição: maquina
 // Pós-condição: espaço liberado
-void free_afd(Machine afd) {
+void free_machine(Machine afd) {
     for (int i = 0; i < afd.alphabet_size; i++) {
         free(afd.alphabet[i]);
     }
@@ -57,8 +57,8 @@ void free_afd(Machine afd) {
     free(afd.transitions);
 }
 
-// Valida uma palavra com um Machine
-// Pré-condição: palavra e afd
+// Valida uma palavra com uma maquina de turing
+// Pré-condição: palavra e maquina
 // Pós-condição: palavra validada
 int validate_word(char * word, Machine afd) {
     char curr_state[MAX_STRING_LENGTH] = "q0"; //assumimos q0 como estado inicial
@@ -68,11 +68,11 @@ int validate_word(char * word, Machine afd) {
 
     int i = 0;
     while (word[i] != '\0') {
-        char symbol = word[i];
+        char read_symbol = word[i];
         int found_transition = 0;
 
         for (int j = 0; j < afd.transitions_size; j++) {
-            if (strcmp(afd.transitions[j].current_state, curr_state) == 0 && afd.transitions[j].symbol == symbol) {
+            if (strcmp(afd.transitions[j].current_state, curr_state) == 0 && afd.transitions[j].read_symbol == read_symbol) {
                 strcpy(curr_state, afd.transitions[j].next_state);
                 found_transition = 1;
                 break;
@@ -93,7 +93,7 @@ int validate_word(char * word, Machine afd) {
 }
 
 // Inicia simulador
-// Pré-condição: afd preenchido
+// Pré-condição: maquina de turing preenchida
 // Pós-condição: aplicação finalizada
 void run_simulator(Machine afd) {
     char word[MAX_LENGTH];
@@ -114,12 +114,12 @@ void run_simulator(Machine afd) {
 // Pós-condição: aplicação finalizada
 void start() {
     Machine afd;
-    //init_afd(&afd);
+    //init_machine(&afd);
 
     //read_afd("afd.txt", &afd);
-    //show_afd(afd);
+    //show_machine(afd);
 
     ///run_simulator(afd);
 
-    //free_afd(afd);
+    //free_machine(afd);
 }
