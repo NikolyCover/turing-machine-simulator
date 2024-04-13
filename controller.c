@@ -54,48 +54,60 @@ void free_machine(Machine machine) {
 // Pré-condição: palavra e maquina
 // Pós-condição: palavra validada
 int validate_word(char * word, Machine machine) {
-    /*
     char curr_state[MAX_STRING_LENGTH] = "q0"; //assumimos q0 como estado inicial
+    char tape[MAX_TAPE_SIZE];
+    int tape_indicator = 1; //começa após o caracter de início de fita
+
+    //inicializando fita
+    tape[0] = '*';//marcador de início de fita
+    strcpy(tape + 1, word);
+    strcat(tape, "$"); //marcador de fim de fita
 
     show_processing_header(word);
-    show_processing_step(curr_state, word);
+    show_processing_step(tape, tape_indicator, curr_state);
 
-    int i = 0;
-    while (word[i] != '\0') {
-        char read_symbol = word[i];
-        int found_transition = 0;
+    Transition * t = find_transition(curr_state, tape[tape_indicator], machine);
+    while (t != NULL) {
+        strcpy(curr_state, t->next_state);
+        tape[tape_indicator] =  t->write_symbol;
+        tape_indicator += t->direction == 'D' ? 1 : -1;
 
-        for (int j = 0; j < machine.transitions_size; j++) {
-            if (strcmp(machine.transitions[j].current_state, curr_state) == 0 && machine.transitions[j].read_symbol == read_symbol) {
-                strcpy(curr_state, machine.transitions[j].next_state);
-                found_transition = 1;
-                break;
-            }
-        }
+        free(t); // a cada chamada de find_transition t é alocado
 
-        if (!found_transition) {
-            return 0;
-        }
-
-        show_processing_step(curr_state, word + i + 1);
-
-        i++;
+        show_processing_step(tape, tape_indicator, curr_state);
+        t = find_transition(curr_state, tape[tape_indicator], machine);
     }
 
-    if (is_final_state(curr_state, machine)) return 1;*/
+    if (is_final_state(curr_state, machine)) return 1;
     return 0;
+}
+
+// Encontra transição com em um estado e simbolo lido de uma maquina
+// Pré-condição: estado, simbolo e maquina
+// Pós-condição: transição retornada caso exista e NULL caso não exista
+Transition * find_transition(char * curr_state, char symbol, Machine machine) {
+    Transition * t = (Transition *) malloc(sizeof(Transition));
+
+    for(int i = 0; i < machine.transitions_size; i++) {
+        *t = machine.transitions[i];
+        if(strcmp(curr_state, t->current_state) == 0 && t->read_symbol == symbol) {
+            return t;
+        }
+    }
+
+    return NULL;
 }
 
 // Inicia simulador
 // Pré-condição: maquina de turing preenchida
 // Pós-condição: aplicação finalizada
-void run_simulator(Machine afd) {
+void run_simulator(Machine machine) {
     char word[MAX_LENGTH];
 
     input_word(word);
 
     while(strcmp(word, "sair") != 0) {
-        show_result(validate_word(word, afd));
+        show_result(validate_word(word, machine));
 
         print_divider();
         input_word(word);
@@ -106,13 +118,16 @@ void run_simulator(Machine afd) {
 // Pré-condição: nenhuma
 // Pós-condição: aplicação finalizada
 void start() {
+    char filename[100];
     Machine machine;
     init_machine(&machine);
 
-    read_machine("machine.txt", &machine);
+    input_filename(filename);
+
+    read_machine(filename, &machine);
     show_machine(machine);
 
-    //run_simulator(machine);
+    run_simulator(machine);
 
-    //free_machine(machine);
+    free_machine(machine);
 }

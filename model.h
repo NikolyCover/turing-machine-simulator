@@ -14,7 +14,7 @@ typedef struct {
     char read_symbol;
     char * next_state;
     char write_symbol;
-    char direction;
+    char direction; // 'D' (direita) ou 'E' (esquerda)
 } Transition;
 
 typedef  struct  {

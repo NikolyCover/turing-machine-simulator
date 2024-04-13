@@ -41,4 +41,9 @@ int is_final_state(char * state, Machine machine);
 // Pós-condição: maquina preenchida
 void init_machine(Machine * machine);
 
+// Encontra transição com em um estado e simbolo lido de uma maquina
+// Pré-condição: estado, simbolo e maquina
+// Pós-condição: transição retornada caso exista e NULL caso não exista
+Transition * find_transition(char * curr_state, char symbol, Machine machine);
+
 #endif //AFD_SIMULATOR_CONTROLLER_H

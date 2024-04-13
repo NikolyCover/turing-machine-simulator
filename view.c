@@ -8,14 +8,15 @@
 // Pré-condição: nenhuma
 // Pós-condição: um divisor é mostrado no terminal
 void print_divider() {
-    printf("\n--------------------------------------------------\n\n");
+    printf("\n-------------------------------------------------------------------------\n\n");
 }
 
 // Mostra todas as informações de uma maquina de turing
 // Pré-condição: estrutura do tipo maquina de turing preenchida
 // Pós-condição: informações mostradas no terminal
 void show_machine(Machine machine) {
-    printf("------------------ AFD SIMULATOR ------------------\n");
+    print_divider();
+    printf("MAQUINA DE TURING:\n");
     printf("\nQuantidade de estados: %d", machine.states_size);
 
     printf("\nFinais: ");
@@ -82,11 +83,12 @@ void show_result(int result) {
 // Mostra um passo do processamento da mensagem
 // Pré-condição: fita, cabeça da fita e estado atual
 // Pós-condição: passo mostrado
-void show_processing_step(char * tape, int tape_head, char *curr_state) {
+void show_processing_step(char * tape, int tape_indicator, char *curr_state) {
     for (int i = 0; tape[i] != '\0'; i++) {
-        if (i == tape_head) printf("[%s]", curr_state);
+        if (i == tape_indicator) printf("[%s]", curr_state);
         printf("%c", tape[i]);
     }
+    printf("\n");
 }
 
 // Mostra cabeçalho do processamento
@@ -94,4 +96,13 @@ void show_processing_step(char * tape, int tape_head, char *curr_state) {
 // Pós-condição: cabeçalho é mostrado
 void show_processing_header(char * word) {
     printf("\nProcessamento de '%s':\n", word);
+}
+
+// Pega o nome do arquivo do usuário
+// Pré-condição: ponteiro de char
+// Pós-condição: ponteiro de char preenchido com o que o usuário digitou
+void input_filename(char * filename) {
+    printf("-------------------------------------------- TURING MACHINE SIMULATOR --------------------------------------------\n");
+    printf("\nDigite o nome do arquivo que contém a definição da maquina de turing: ");
+    scanf("%s", filename);
 }

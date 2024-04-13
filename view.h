@@ -41,11 +41,16 @@ void show_red_message(char * message);
 // Mostra um passo do processamento da mensagem
 // Pré-condição: fita, cabeça da fita e estado atual
 // Pós-condição: passo mostrado
-void show_processing_step(char * tape, int tape_head, char *curr_state);
+void show_processing_step(char * tape, int tape_indicator, char *curr_state);
 
 // Mostra cabeçalho do processamento
 // Pré-condição: palavra
 // Pós-condição: cabeçalho é mostrado
 void show_processing_header(char * word);
+
+// Pega o nome do arquivo do usuário
+// Pré-condição: ponteiro de char
+// Pós-condição: ponteiro de char preenchido com o que o usuário digitou
+void input_filename(char * filename);
 
 #endif //TURING_MACHINE_SIMULATOR_VIEW_H
