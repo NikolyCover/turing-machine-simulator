@@ -103,6 +103,6 @@ void show_processing_header(char * word) {
 // Pós-condição: ponteiro de char preenchido com o que o usuário digitou
 void input_filename(char * filename) {
     printf("-------------------------------------------- TURING MACHINE SIMULATOR --------------------------------------------\n");
-    printf("\nDigite o nome do arquivo que contém a definição da maquina de turing: ");
+    printf("\nDigite o nome do arquivo (com extensão) que contém a definição da maquina de turing: ");
     scanf("%s", filename);
 }
