@@ -5,7 +5,8 @@
 #ifndef TURING_MACHINE_SIMULATOR_MODEL_H
 #define TURING_MACHINE_SIMULATOR_MODEL_H
 
-#define MAX 100
+#define MAX_STRING_LENGTH 5
+#define MAX_LENGTH 1000
 #define MAX_TAPE_SIZE 1024
 
 typedef struct {

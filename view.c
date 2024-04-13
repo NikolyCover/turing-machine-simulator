@@ -29,8 +29,10 @@ void show_machine(Machine machine) {
     }
 
     printf("\nTransições:\n");
+    Transition t;
     for (int i = 0; i < machine.transitions_size; i++) {
-        printf("(%s, %c) = %s\n", machine.transitions[i].current_state, machine.transitions[i].symbol, machine.transitions[i].next_state);
+        t = machine.transitions[i];
+        printf("(%s, %c) = (%s, %c, %c)\n", t.current_state, t.read_symbol, t.next_state, t.write_symbol, t.direction);
     }
 
     print_divider();
